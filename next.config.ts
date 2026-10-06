@@ -1,8 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  agentRules: false,
+  poweredByHeader: false,
   images: {
+    formats: ["image/webp"],
+    maximumRedirects: 1,
+    maximumResponseBody: 10 * 1024 * 1024,
+    maximumDiskCacheSize: 50 * 1024 * 1024,
     remotePatterns: [
       {
         protocol: "https",
@@ -11,8 +16,24 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "picsum.photos",
-      }
+      },
     ],
+  },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
+        ],
+      },
+    ];
   },
 };
 
