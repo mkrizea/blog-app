@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 import { FiTrash2 } from "react-icons/fi";
 import { useBlogStore } from "@/store/blogStore";
 import { isAllowedImageUrl } from "@/lib/blog-input";
@@ -38,23 +40,24 @@ const BlogList: React.FC = () => {
             <p className="mt-1 text-sm text-stone-500">Loading your posts...</p>
           )}
         </div>
-        <div className="relative w-80 max-w-[60%] shrink-0 sm:w-96">
-          <label htmlFor="post-search" className="sr-only">
-            Search posts
-          </label>
-          <input
-            id="post-search"
-            type="search"
-            placeholder={searchDisabled ? "Search is available after you add a post" : "Search by title"}
-            value={searchQuery}
-            disabled={searchDisabled}
-            onChange={(event) => {
-              setSearchQuery(event.target.value);
-              setPendingDeleteId(null);
-            }}
-            className="w-full rounded-md border border-stone-300 bg-white px-4 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:bg-stone-100 disabled:text-stone-400"
-          />
-        </div>
+        <TextField
+          id="post-search"
+          type="search"
+          size="small"
+          placeholder={
+            searchDisabled
+              ? "Search is available after you add a post"
+              : "Search by title"
+          }
+          value={searchQuery}
+          disabled={searchDisabled}
+          onChange={(event) => {
+            setSearchQuery(event.target.value);
+            setPendingDeleteId(null);
+          }}
+          slotProps={{ htmlInput: { "aria-label": "Search posts" } }}
+          sx={{ width: { xs: "60%", sm: 384 }, maxWidth: 384, flexShrink: 0 }}
+        />
       </div>
 
       {hasHydrated && filteredData.length === 0 && (
@@ -68,20 +71,24 @@ const BlogList: React.FC = () => {
               : "Write your first post."}
           </p>
           {searchQuery ? (
-            <button
+            <Button
               type="button"
+              variant="outlined"
+              color="inherit"
               onClick={() => setSearchQuery("")}
-              className="mt-5 rounded-md border border-stone-300 px-4 py-2 text-sm font-medium text-stone-800 hover:bg-stone-50"
+              sx={{ mt: 2.5, textTransform: "none" }}
             >
               Clear search
-            </button>
+            </Button>
           ) : (
-            <Link
+            <Button
+              component={Link}
               href="/create-blog"
-              className="mt-5 inline-block rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+              variant="contained"
+              sx={{ mt: 2.5, textTransform: "none" }}
             >
               New post
-            </Link>
+            </Button>
           )}
         </div>
       )}
@@ -101,7 +108,10 @@ const BlogList: React.FC = () => {
               <FiTrash2 size={16} aria-hidden="true" />
             </button>
 
-            <Link href={`/blog/${item.id}`} className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+            <Link
+              href={`/blog/${item.id}`}
+              className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+            >
               <div className="relative h-48 w-full bg-stone-100">
                 {isAllowedImageUrl(item.imageUrl) && (
                   <Image

@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
             </Link>
             <Link
               href="/create-blog"
-              className="rounded-md bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700"
+              className="rounded-md bg-[#1976d2] px-3 py-2 text-sm font-medium text-white hover:bg-[#1565c0]"
             >
               New post
             </Link>
@@ -79,7 +79,7 @@ const Navbar: React.FC = () => {
           </Link>
           <Link
             href="/create-blog"
-            className="mt-1 block rounded-md bg-blue-600 px-2 py-2 text-center font-medium text-white hover:bg-blue-700"
+            className="mt-1 block rounded-md bg-[#1976d2] px-2 py-2 text-center font-medium text-white hover:bg-[#1565c0]"
             onClick={() => setIsOpen(false)}
           >
             New post

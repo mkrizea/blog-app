@@ -4,6 +4,7 @@ import "./globals.css";
 import React from "react";
 import Navbar from "@/components/navbar";
 import BlogStoreHydration from "@/components/blog-store-hydration";
+import MuiProvider from "@/components/mui-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,10 +35,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <BlogStoreHydration />
-        <Navbar />
-        {/* push content below fixed navbar */}
-        <div className="pt-24 pb-4">{children}</div>
+        <MuiProvider>
+          <BlogStoreHydration />
+          <Navbar />
+          <div className="pt-24 pb-4">{children}</div>
+        </MuiProvider>
       </body>
     </html>
   );
