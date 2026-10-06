@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import React from "react";
-import Navbar from "@/app/components/navbar";
-import BlogStoreHydration from "@/app/components/blog-store-hydration";
+import Navbar from "@/components/navbar";
+import BlogStoreHydration from "@/components/blog-store-hydration";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

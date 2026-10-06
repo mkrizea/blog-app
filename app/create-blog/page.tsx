@@ -3,12 +3,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { BlogItem, useBlogStore } from "@/app/store/blogStore";
+import { BlogItem, useBlogStore } from "@/store/blogStore";
 import {
   BLOG_FIELD_LIMITS,
   BlogFieldErrors,
   validateBlogInput,
-} from "@/app/lib/blog-input";
+} from "@/lib/blog-input";
 
 const fieldClass =
   "mt-1 w-full rounded-md border border-stone-300 px-4 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-blue-500";

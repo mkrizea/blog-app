@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useBlogStore } from "@/app/store/blogStore";
+import { useBlogStore } from "@/store/blogStore";
 
 const BlogStoreHydration = () => {
   useEffect(() => {

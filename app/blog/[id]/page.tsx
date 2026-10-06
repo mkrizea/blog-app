@@ -4,8 +4,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { useBlogStore } from "@/app/store/blogStore";
-import { isAllowedImageUrl } from "@/app/lib/blog-input";
+import { useBlogStore } from "@/store/blogStore";
+import { isAllowedImageUrl } from "@/lib/blog-input";
 
 const BlogDetails: React.FC = () => {
   const params = useParams();

@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FiTrash2 } from "react-icons/fi";
-import { useBlogStore } from "@/app/store/blogStore";
-import { isAllowedImageUrl } from "@/app/lib/blog-input";
-import DeleteBlogDialog from "@/app/components/delete-blog-dialog";
+import { useBlogStore } from "@/store/blogStore";
+import { isAllowedImageUrl } from "@/lib/blog-input";
+import DeleteBlogDialog from "@/components/delete-blog-dialog";
 
 const BlogList: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
